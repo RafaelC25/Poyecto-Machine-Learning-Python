@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proyecto Final - Electiva</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/slick.css') }}" type="text/css" /> 
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <video autoplay muted loop id="bg-video">
+        <source src="{{ url_for('static', filename='video/158229-816359520_small.mp4') }}" type="video/mp4">
+    </video>
+    <div class="page-container">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="cd-slider-nav">
+                        <nav class="navbar navbar-expand-lg" id="tm-nav">
+                            <h1 class="navbar-brand" href="#">Proyecto Final </h1>
+                            <button class="navbar-toggler" type="button" data-bs-toggle="collapse">
+                                <span class="navbar-toggler-icon"></span>
+                            </button>
+                            <div class="collapse navbar-collapse">
+                                <ul class="navbar-nav mb-2 mb-lg-0">
+                                    <li class="nav-item selected">
+                                        <a class="nav-link">Inicio</a>
+                                        <div class="circle"></div>
+                                    </li>
+                                    <li class="nav-item selected">
+                                        <a class="nav-link">Cerrar Sesión</a>
+                                        <div class="circle"></div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid tm-content-container">
+            <ul class="cd-hero-slider mb-0 py-5">
+                <li class="px-3" data-page-no="1">
+                    <div class="page-width-1 page-left">
+                        <div class="d-flex position-relative tm-border-top tm-border-bottom intro-container">
+                            <div class="intro-left tm-bg-dark">
+                                <h1 class="mb-4">Predicción</h1>
+                                <form method="POST">
+                                    <div class="spacing">
+                                        Año: <input type="number" name="year"><br>
+                                        Temperatura: <input type="number" name="temperature"><br>       
+                                        Precipitación: <input type="number" name="precipitation"><br>
+                                        Riego: <input type="number" name="irrigation"><br>
+                                        Plagas: <input type="number" name="pest_management"><br>
+                                        Densidad: <input type="number" name="density"><br>
+                                        Espaciado: <input type="number" name="plant_spacing"><br>
+                                        PH suelo: <input type="number" name="soil_analysis" step="0.01"><br>
+                                        Profundidad: <input type="number" name="planting_depth"><br>
+                                    </div>
+                                    <button type="submit" class="btn btn-primary mt-3">Predecir</button>
+                                </form>
+                                {% if prediction is not none %}
+                                <div class="mt-4">
+                                    <p>Su producción para el año {{ year }} es de {{ prediction }} toneladas de ñame</p>
+                                </div>
+                                {% endif %}
+                            </div>
+                            <div class="intro-right">
+                                <div class="intro-left tm-bg-dark">
+                                    <h1 class="mb-4">Guia para tu Predicción</h1>
+                                    <div class="spacing">
+                                        Año: <div>Año en el cual se desea saber la producción.</div><br> 
+                                        Temperatura: <div>La temperatura debe estar entre 20° y 30° para un crecimiento óptimo.</div><br>       
+                                        Precipitación: <div>0 la cantidad más baja y 7 la cantidad más alta de lluvias.</div><br>
+                                        Riego: <div>El rango de riego está entre 1 y 7 días.</div><br>
+                                        Plagas: <div>0 = Hay plagas y 1 = No hay plagas.</div><br>
+                                        Densidad: <div>Número de hectáreas a plantar.</div><br>
+                                        Espaciado: <div>60 a 90 cm es lo recomendado.</div><br>
+                                        PH suelo: <div>El rango es de 5.5 a 6.5. Para un buen crecimiento.</div><br>
+                                        Profundidad: <div>10 a 12 cm es lo ideal.</div><br>
+                                    </div>                  
+                                </div>
+                            </div>
+                            <div class="circle intro-circle-1"></div>
+                            <div class="circle intro-circle-2"></div>
+                            <div class="circle intro-circle-3"></div>
+                            <div class="circle intro-circle-4"></div>
+                        </div>
+                    </div>
+                    <div class="text-center mt-5">
+                        <p class="mt-5">Alumnos: Lino Robechi Galván - Miguel Bohorquez Cardenas - Rafael Castillo.</p>
+                        <p>@Cecar</p>
+                    </div>          
+                </li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>
